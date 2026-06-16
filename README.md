@@ -1,37 +1,38 @@
 # DevPulse
 
-DevPulse is part of ArkNet Digital's Creator / Founder Tools.
+DevPulse is an ArkNet Digital product in the Creator / Founder Tools.
 
 ## Promise
 
-turn code, commits, and product motion into a public proof engine
+Turn code progress into public proof that compounds credibility.
 
-## Built For
+DevPulse helps builders translate commits, releases, demos, and technical decisions into a proof feed investors, users, contributors, and collaborators can understand.
 
-developers, indie hackers, CTOs, and technical creators
+## Current v1
 
-## Product Modules
+- Bespoke product cockpit UI
+- Live product-specific intake
+- `POST /api/intelligence`
+- Product-specific scoring and action queue
+- Contributor mission lanes
+- Mobile-friendly layout
 
-- Changelog intelligence
-- Technical story builder
-- Repo health pulse
-- Demo script
-- Public proof archive
+## Contributor Missions
 
-## Open Source Direction
-
-This repo is open to contributors because strong ideas move faster when serious builders can inspect, improve, and extend them. The goal is not secrecy. The goal is speed, quality, and contribution.
-
-## First Workflow
-
-1. Enter real context.
-2. Generate a useful first output.
-3. Review risk, confidence, or next action.
-4. Save the result into product memory in a future paid workspace.
+- GitHub commit ingestion: Read commits and PRs into the proof engine.
+- Screenshot evidence: Attach UI and deploy proof to every update.
+- Public roadmap feed: Publish what shipped and what is next.
+- Credibility score: Track consistency, proof density, and user-facing progress.
 
 ## Run Locally
 
 ```bash
 npm install
 npm run dev
+```
+
+## Build
+
+```bash
+npm run build
 ```

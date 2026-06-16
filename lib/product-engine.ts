@@ -1,69 +1,94 @@
 export type IntelligenceInput = { input?: string };
-
 const product = {
   "repo": "DevPulse",
   "suite": "Creator / Founder Tools",
-  "category": "Developer signal",
-  "audience": "developers, indie hackers, CTOs, and technical creators",
-  "promise": "turn code, commits, and product motion into a public proof engine",
-  "inputLabel": "Project update, repo summary, or changelog",
-  "placeholder": "Added live SSE cockpit, failure learning, and repo factory quality gate",
-  "primary": "Generate dev pulse",
-  "gradient": "from-cyan-300 via-emerald-300 to-lime-300",
+  "domain": "Developer proof",
+  "accent": "from-cyan-300 via-emerald-300 to-lime-300",
+  "hero": "Turn code progress into public proof that compounds credibility.",
+  "sub": "DevPulse helps builders translate commits, releases, demos, and technical decisions into a proof feed investors, users, contributors, and collaborators can understand.",
+  "input": "Shipped RLS security fix, rebuilt ExposureWatch, opened contributor missions, verified API and build",
+  "cta": "Generate dev pulse",
+  "score": "Credibility signal",
   "modules": [
-    "Changelog intelligence",
-    "Technical story builder",
-    "Repo health pulse",
-    "Demo script",
-    "Public proof archive"
+    [
+      "Commit intelligence",
+      "Summarize what changed and why it matters."
+    ],
+    [
+      "Proof feed",
+      "Create public updates with receipts and screenshots."
+    ],
+    [
+      "Demo script",
+      "Turn technical work into a short product story."
+    ],
+    [
+      "Roadmap signal",
+      "Show what shipped, what learned, and what comes next."
+    ]
   ],
-  "outputs": [
-    "Public update",
-    "Technical summary",
-    "Next demo target",
-    "Credibility gaps"
+  "rows": [
+    [
+      "Release note",
+      "Users",
+      "Medium",
+      "Translate changes into value users understand."
+    ],
+    [
+      "Build log",
+      "Contributors",
+      "High",
+      "Show technical detail and open tasks."
+    ],
+    [
+      "Founder update",
+      "Investors",
+      "High",
+      "Connect execution speed to business momentum."
+    ],
+    [
+      "Demo outline",
+      "Distribution",
+      "Medium",
+      "Make the next video or walkthrough easier to record."
+    ]
   ],
-  "next": [
-    "GitHub commit ingestion",
-    "release note automation",
-    "public roadmap feed",
-    "technical credibility score"
+  "missions": [
+    [
+      "GitHub commit ingestion",
+      "Read commits and PRs into the proof engine."
+    ],
+    [
+      "Screenshot evidence",
+      "Attach UI and deploy proof to every update."
+    ],
+    [
+      "Public roadmap feed",
+      "Publish what shipped and what is next."
+    ],
+    [
+      "Credibility score",
+      "Track consistency, proof density, and user-facing progress."
+    ]
   ]
 } as const;
-
-function score(text: string) {
-  const length = text.trim().length;
-  const diversity = new Set(text.toLowerCase().replace(/[^a-z0-9 ]/g, '').split(/\s+/).filter(Boolean)).size;
-  return Math.min(97, 48 + Math.floor(length / 7) + Math.min(28, diversity));
-}
-
+function scoreFor(subject: string) { let score = 57 + Math.min(30, Math.floor(subject.length / 6)); if (/risk|urgent|investor|client|payment|contract|meeting|decision|launch|proof|delay/i.test(subject)) score += 7; return Math.min(98, score); }
+function band(score: number) { return score >= 86 ? 'strong' : score >= 72 ? 'ready' : score >= 60 ? 'needs review' : 'starter'; }
 export function generateIntelligence({ input = '' }: IntelligenceInput) {
-  const subject = input.trim() || product.placeholder;
-  const confidence = score(subject);
-  const urgency = confidence > 82 ? 'high' : confidence > 66 ? 'medium' : 'starter';
+  const subject = input.trim() || product.input;
+  const score = scoreFor(subject);
   return {
     product: product.repo,
-    category: product.category,
+    brand: 'ArkNet Digital',
+    suite: product.suite,
+    domain: product.domain,
     subject,
-    confidence,
-    urgency,
-    executive_summary: product.promise,
-    immediate_outputs: product.outputs.map((output, index) => ({
-      title: output,
-      detail: output + ' for: ' + subject,
-      priority: index === 0 ? 'primary' : index === 1 ? 'supporting' : 'next'
-    })),
-    automation_plan: product.modules.map((module, index) => ({
-      stage: index + 1,
-      module,
-      value: 'Automate ' + module.toLowerCase() + ' so ' + product.audience + ' can move faster with less manual work.'
-    })),
-    future_addons: product.next.map((addon, index) => ({
-      name: addon,
-      horizon: index < 2 ? 'v2' : 'v3',
-      contributor_lane: index % 2 === 0 ? 'integration' : 'product intelligence'
-    })),
-    contributor_brief: 'Improve ' + product.repo + ' by making ' + product.category.toLowerCase() + ' easier for ' + product.audience + '.',
+    score,
+    status: band(score),
+    executive_summary: product.sub,
+    intelligence_map: product.modules.map(([label, value]) => ({ label, value, status: score >= 72 ? 'priority' : 'review' })),
+    action_queue: product.rows.slice(0, 3).map(([item, owner, priority, note]) => ({ action: item + ' - ' + owner, priority, impact: note })),
+    contributor_lanes: product.missions.map(([lane, mission]) => ({ lane, mission })),
     generated_at: new Date().toISOString()
   };
 }

@@ -1,6 +1,6 @@
 # DevPulse
 
-DevPulse is part of Joy Ogunleye's Creator / Founder Tools.
+DevPulse is part of ArkNet Digital's Creator / Founder Tools.
 
 ## Promise
 

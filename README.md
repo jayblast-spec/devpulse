@@ -60,4 +60,4 @@ Optional: `GITHUB_TOKEN` for higher API rate limits.
 
 ## 📄 License
 
-MIT © [Joy Ogunleye](https://github.com/jayblast-spec) · [ArkNet.digital](https://arknet.digital)
+MIT © [ArkNet.digital](https://arknet.digital)

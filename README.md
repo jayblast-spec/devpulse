@@ -1,38 +1,63 @@
-# DevPulse
+<div align="center">
 
-DevPulse is an ArkNet Digital product in the Creator / Founder Tools.
+# 📊 DevPulse
 
-## Promise
+**Instant analytics for any public GitHub profile — stars, forks, languages, top repos at a glance.**
 
-Turn code progress into public proof that compounds credibility.
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Visit-6366f1?style=for-the-badge)](https://devpulse.vercel.app)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
+[![MIT License](https://img.shields.io/badge/License-MIT-34d399?style=for-the-badge)](LICENSE)
 
-DevPulse helps builders translate commits, releases, demos, and technical decisions into a proof feed investors, users, contributors, and collaborators can understand.
+</div>
 
-## Current v1
+---
 
-- Bespoke product cockpit UI
-- Live product-specific intake
-- `POST /api/intelligence`
-- Product-specific scoring and action queue
-- Contributor mission lanes
-- Mobile-friendly layout
+## ✨ Features
 
-## Contributor Missions
+- ⭐ **Star & fork totals** — aggregate across all public repos instantly
+- 🗺️ **Language breakdown** — visual chart of what languages dominate the profile
+- 🏆 **Top repos** — sorted by stars, forks, or recent activity
+- 📈 **Contribution heatmap** — activity patterns over the past year
+- 🔍 **Any public profile** — just enter a username, no auth required
+- 📤 **Share card** — generate a shareable developer profile card
+- ⚡ **Real-time via GitHub API** — always up to date, no cache lag
 
-- GitHub commit ingestion: Read commits and PRs into the proof engine.
-- Screenshot evidence: Attach UI and deploy proof to every update.
-- Public roadmap feed: Publish what shipped and what is next.
-- Credibility score: Track consistency, proof density, and user-facing progress.
+---
 
-## Run Locally
+## 🚀 Quick Start
 
 ```bash
+git clone https://github.com/jayblast-spec/devpulse.git
+cd devpulse
 npm install
 npm run dev
 ```
 
-## Build
+Open [http://localhost:3000](http://localhost:3000)
 
-```bash
-npm run build
-```
+---
+
+## 🛠 Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Framework | Next.js 14 (App Router) |
+| Language | TypeScript |
+| Data | GitHub REST API |
+| Styling | Tailwind CSS |
+| Deployment | Vercel |
+
+---
+
+## 📦 Deploy Your Own
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/jayblast-spec/devpulse)
+
+Optional: `GITHUB_TOKEN` for higher API rate limits.
+
+---
+
+## 📄 License
+
+MIT © [Joy Ogunleye](https://github.com/jayblast-spec) · Built with [ArkNet Forge](https://arknet-os.vercel.app)

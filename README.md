@@ -60,4 +60,4 @@ Optional: `GITHUB_TOKEN` for higher API rate limits.
 
 ## 📄 License
 
-MIT © [ArkNet.digital](https://arknet.digital)
+MIT © [ArkNet.digital](https://www.arknet.digital/vault.html)

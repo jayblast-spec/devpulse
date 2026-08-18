@@ -39,18 +39,18 @@ DevPulse takes a description of recent development work (what shipped, what was 
 ## How It Works
 
 - Built on Next.js App Router with TypeScript, Tailwind CSS 4, and Framer Motion, deployed as Vercel serverless functions.
-- `app/components/ProfileAnalyzer.tsx` calls the real public GitHub REST API directly from the client (`api.github.com/users/{handle}` and `.../repos`) — no auth token needed for public data, no server proxy.
-- Stars, forks, and language breakdown are computed client-side from the real repo list; top repos are sorted by real star count, not a static list.
+- `app/page.tsx` is the entire live product: a text input for a progress description, wired to `app/api/intelligence`, which calls `generateIntelligence()` in `lib/product-engine.ts` and returns the credibility score, module summaries, and proof-feed content shown on the page.
+- `app/components/ProfileAnalyzer.tsx` (real GitHub REST API calls, real stars/forks/language aggregation) exists in the repo but is never imported anywhere — it's not reachable from any route in the live app.
 
 ## Engineering Notes
 
-**The real problem:** GitHub's own profile page doesn't surface an at-a-glance analytics view — total stars across repos, language breakdown, top projects by traction — you'd have to page through repos manually to piece it together.
+**The real problem, stated honestly:** the "credibility score" shown on the live site is not derived from the commits, releases, or work actually described — this needs to be said plainly since it's the product's single core mechanic, not a secondary feature.
 
-**The approach:** fetches up to 100 repos per profile directly from GitHub's public REST API, then aggregates client-side: total stars/forks are a real reduce over `stargazers_count`/`forks_count`, language breakdown is a real tally over each repo's primary `language` field, and top repos are a real sort by star count, not a curated or static list.
+**What the score actually is:** `scoreFor()` in `lib/product-engine.ts` computes `57 + min(30, floor(inputLength / 6))`, plus +7 if the text matches a keyword regex (`risk|urgent|investor|client|payment|contract|meeting|decision|launch|proof|delay`), capped at 98. A longer input, or one containing a matched keyword, scores higher — regardless of whether the described work was real, valuable, or coherent.
 
-**One real number:** pulls up to 100 repositories per profile (`per_page=100`) sorted by `updated` — recently active repos are what's analyzed, not a stale first-100-by-creation-date snapshot.
+**One real number:** typing a single keyword like "launch" into an otherwise empty input raises the score by a flat +7 — the scoring has no relationship to actual commit or release data.
 
-**Not handled yet:** `app/api/intelligence` is a separate, disconnected decorative endpoint — it does not power the actual GitHub analytics and shouldn't be read as part of the analysis pipeline. Unauthenticated GitHub API calls are also rate-limited (60/hour per IP), which can affect heavy testing.
+**What would make this real:** the repo already contains a working real building block — `ProfileAnalyzer.tsx` calls the genuine public GitHub REST API and computes real stars/forks/language stats — but it's disconnected dead code, not wired into the credibility flow. Connecting real GitHub activity data to the score is the gap between what this demos as and what it currently does.
 
 ## Live
 

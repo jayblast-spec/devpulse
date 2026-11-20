@@ -7,7 +7,6 @@
 DevPulse helps builders translate commits, releases, demos, and technical decisions into a proof feed that investors, users, contributors, and collaborators can actually understand — a credibility signal instead of another private changelog.
 
 <p>
-  <a href="https://devpulse-drab-alpha.vercel.app"><img alt="Live Demo" src="https://img.shields.io/badge/Live-Demo-1D4ED8?style=for-the-badge&logo=vercel&logoColor=white"></a>
   <a href="https://github.com/jayblast-spec/devpulse"><img alt="GitHub Repo" src="https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white"></a>
 </p>
 
@@ -54,7 +53,7 @@ DevPulse takes a description of recent development work (what shipped, what was 
 
 ## Live
 
-[devpulse-drab-alpha.vercel.app](https://devpulse-drab-alpha.vercel.app)
+*(demo temporarily offline)*
 
 ## Tech Stack
 
